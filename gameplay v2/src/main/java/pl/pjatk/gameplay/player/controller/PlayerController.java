@@ -40,4 +40,18 @@ public class PlayerController {
     public ResponseEntity<Player> save(@RequestBody Player player){
         return ResponseEntity.ok(playerService.save(player));
     }
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> delete(@PathVariable long id){
+
+        playerService.delete(id);
+
+        return ResponseEntity.ok().build();
+    }
+    @PutMapping("/{id}")
+    public ResponseEntity<Player> update(@RequestBody Player playerWithUpdatedProperties, @PathVariable long id){
+
+        return ResponseEntity.ok(playerService.update(id, playerWithUpdatedProperties));
+    }
+
+
 }
